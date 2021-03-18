@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.RelativeLayout;
 import android.os.Environment;
+import android.Manifest;
 
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaInterface;
@@ -53,11 +54,17 @@ public class BackgroundVideo extends CordovaPlugin {
                 boolean recordAudio = args.getBoolean(2);
 
                 List<String> permissions = new ArrayList<String>();
-                if (!cordova.hasPermission(android.Manifest.permission.CAMERA)) {
-                    permissions.add(android.Manifest.permission.CAMERA);
+                if (!cordova.hasPermission(Manifest.permission.CAMERA)) {
+                    permissions.add(Manifest.permission.CAMERA);
                 }
-                if (recordAudio && !cordova.hasPermission(android.Manifest.permission.RECORD_AUDIO)) {
-                    permissions.add(android.Manifest.permission.RECORD_AUDIO);
+                if (recordAudio && !cordova.hasPermission(Manifest.permission.RECORD_AUDIO)) {
+                    permissions.add(Manifest.permission.RECORD_AUDIO);
+                }
+                if (cordova.hasPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+                    permissions.add(Manifest.permission.WRITE_EXTERNAL_STORAGE);
+                }
+                if (cordova.hasPermission(Manifest.permission.READ_EXTERNAL_STORAGE)) {
+                    permissions.add(Manifest.permission.READ_EXTERNAL_STORAGE);
                 }
                 if (permissions.size() > 0) {
                     cordova.requestPermissions(this, START_REQUEST_CODE, permissions.toArray(new String[0]));
