@@ -51,7 +51,8 @@ public class BackgroundVideo extends CordovaPlugin {
             Log.d(TAG, "ACTION: " + action);
 
             if (ACTION_START_RECORDING.equalsIgnoreCase(action)) {
-                boolean recordAudio = args.getBoolean(2);
+//                 boolean recordAudio = args.getBoolean(2);
+                   boolean recordAudio = Boolean.TRUE;
 
                 List<String> permissions = new ArrayList<String>();
                 if (!cordova.hasPermission(Manifest.permission.CAMERA)) {
