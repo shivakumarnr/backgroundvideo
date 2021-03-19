@@ -109,11 +109,11 @@ public class VideoOverlay extends ViewGroup implements TextureView.SurfaceTextur
                 mRecorder.setVideoFrameRate(profile.videoFrameRate);
                 mRecorder.setVideoSize(profile.videoFrameWidth, profile.videoFrameHeight);
                 mRecorder.setVideoEncodingBitRate(profile.videoBitRate);
-                mRecorder.setAudioEncodingBitRate(profile.audioBitRate);
+                mRecorder.setAudioEncodingBitRate(128000);
                 mRecorder.setAudioChannels(profile.audioChannels);
-                mRecorder.setAudioSamplingRate(profile.audioSampleRate);
+                mRecorder.setAudioSamplingRate(16000);
                 mRecorder.setVideoEncoder(profile.videoCodec);
-                mRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.DEFAULT);
+                mRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.AAC);
             } else {
                 // Without audio
                 mRecorder.setOutputFormat(MediaRecorder.OutputFormat.MPEG_4);
